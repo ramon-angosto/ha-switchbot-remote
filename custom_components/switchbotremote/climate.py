@@ -214,7 +214,7 @@ class SwitchBotRemoteClimate(ClimateEntity, RestoreEntity):
     def set_supported_features(self):
         if self.hvac_mode == HVACMode.DRY or self.hvac_mode == HVACMode.FAN_ONLY:
             # switchbot api accept only 25 in DRY Mode
-            self.set_temperature(temperature=25)
+            self._target_temperature = 25
             self._supported_features = ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON | ClimateEntityFeature.FAN_MODE
         else:
             self._supported_features = ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON | ClimateEntityFeature.TARGET_TEMPERATURE | ClimateEntityFeature.FAN_MODE
