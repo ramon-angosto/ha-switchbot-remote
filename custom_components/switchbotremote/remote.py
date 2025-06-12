@@ -47,6 +47,11 @@ class SwitchBotRemoteOther(RemoteEntity, RestoreEntity):
         """If the switch is currently on or off."""
         return self._is_on
 
+    @property
+    def unique_id(self):
+        """Return a unique ID."""
+        return self._attr_unique_id
+
     def turn_on(self, activity: str = None, **kwargs):
         """Send the power on command."""
         if self._on_command:
